@@ -4,24 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+    <script type="module" defer>
+      import { polyfillCountryFlagEmojis } from "https://cdn.skypack.dev/country-flag-emoji-polyfill";
+      polyfillCountryFlagEmojis();
+    </script>
     <link rel="stylesheet" href="style.css" />
+
     <title>Project World Clock</title>
   </head>
   <body>
-    <h1>World Clock</h1>
+    <div class="container">
+      <h1>World Clock</h1>
+      <select>
+        <option value="">Select a City</option>
+        <option value="">London</option>
+        <option value="">New York</option>
+        <option value="">Aukland</option>
+      </select>
+    </div>
+    <div class="city">
+      <h2>Los Angeles 🇺🇸</h2>
+      <div class="date">29th March 2026</div>
+      <div class="time">23:10:26</div>
+    </div>
+    <div class="city">
+      <h2>Sydney 🇦🇺</h2>
+      <div class="date">29th March 2026</div>
+      <div class="time">23:10:26</div>
+    </div>
+    <footer>
+      Coded by
+      <a href="https://github.com/carey-ui" target="_blank">Carey Faherty</a>,
+      is on
+      <a href="https://github.com/carey-ui/aimsir_app_shecodes" target="_blank"
+        >GitHub</a
+      >
+      and hosted on
+      <a href="https://cf-projectworldclock.netlify.app/" target="_blank"
+        >Netlify</a
+      >
+    </footer>
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
-  <footer>
-    Coded by
-    <a href="https://github.com/carey-ui" target="_blank">Carey Faherty</a>, is
-    on
-    <a href="https://github.com/carey-ui/aimsir_app_shecodes" target="_blank"
-      >GitHub</a
-    >
-    and hosted on
-    <a href="https://cf-projectworldclock.netlify.app/" target="_blank"
-      >Netlify</a
-    >
-  </footer>
 </html>
