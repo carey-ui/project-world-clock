@@ -15,19 +15,28 @@ function updateTime() {
     sydneyDateElement.innerHTML = sydneyTimeZone.format("MMMM Do YYYY");
     sydneyTimeElement.innerHTML = `${sydneyTimeZone.format("h:mm:ss [<small>]A[</small>]")}`;
   }
+  let parisElement = document.querySelector("#city-three");
+  if (parisElement) {
+    let parisDateElement = parisElement.querySelector(".date");
+    let parisTimeElement = parisElement.querySelector(".time");
+    let parisTimeZone = moment().tz("Europe/Paris");
+    parisDateElement.innerHTML = parisTimeZone.format("MMMM Do YYYY");
+    parisTimeElement.innerHTML = `${parisTimeZone.format("h:mm:ss [<small>]A[</small>]")}`;
+  }
 }
 updateTime();
 setInterval(updateTime, 1000);
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
+  if (!cityTimeZone) return;
   if (cityTimeZone === "current") {
     cityTimeZone = moment.tz.guess();
   }
   let cityTime = moment().tz(cityTimeZone);
   let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let citiesElement = document.querySelector("#cities");
-  citiesElement.innerHTML = `<div class="city" id="city-one">
+  citiesElement.innerHTML = `<div class="city">
           <div>
             <h2>${cityName}</h2>
             <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
