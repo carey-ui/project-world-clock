@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
     <script type="module" defer>
       import { polyfillCountryFlagEmojis } from "https://cdn.skypack.dev/country-flag-emoji-polyfill";
       polyfillCountryFlagEmojis();
     </script>
-    <link rel="stylesheet" href="style.css" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.6.0/moment-timezone-with-data-1970-2030.js"></script>
     <title>Project World Clock</title>
   </head>
   <body>
@@ -22,21 +23,21 @@
         <option value="">Aukland</option>
       </select>
 
-      <div class="city">
+      <div class="city" id="city-one">
         <div>
           <h2>Los Angeles 🇺🇸</h2>
           <div class="date">29th March 2026</div>
         </div>
         <div class="time">11:10:26 <small>PM</small></div>
       </div>
-      <div class="city">
+      <div class="city" id="city-two">
         <div>
           <h2>Sydney 🇦🇺</h2>
           <div class="date">29th March 2026</div>
         </div>
         <div class="time">11:10:26 <small>PM</small></div>
       </div>
-      <div class="city">
+      <div class="city" id="city-three">
         <div>
           <h2>Paris 🇫🇷</h2>
           <div class="date">29th March 2026</div>
