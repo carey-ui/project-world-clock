@@ -1,18 +1,41 @@
 function updateTime() {
-  let cityOneElement = document.querySelector("#city-one");
-  let cityOneDateElement = cityOneElement.querySelector(".date");
-  let cityOneTimeElement = cityOneElement.querySelector(".time");
-  let cityOneTime = moment().tz("America/Los_Angeles");
-  cityOneDateElement.innerHTML = cityOneTime.format("MMMM Do YYYY");
-  cityOneTimeElement.innerHTML = `${cityOneTime.format("h:mm:ss [<small>]A[</small>]")}`;
-
-  let cityTwoElement = document.querySelector("#city-two");
-  let cityTwoDateElement = cityTwoElement.querySelector(".date");
-  let cityTwoTimeElement = cityTwoElement.querySelector(".time");
-  let cityTwoTime = moment().tz("Australia/Sydney");
-  cityTwoDateElement.innerHTML = cityTwoTime.format("MMMM Do YYYY");
-  cityTwoTimeElement.innerHTML = `${cityTwoTime.format("h:mm:ss [<small>]A[</small>]")}`;
+  let losAngelesElement = document.querySelector("#city-one");
+  if (losAngelesElement) {
+    let losAngelesDateElement = losAngelesElement.querySelector(".date");
+    let losAngelesTimeElement = losAngelesElement.querySelector(".time");
+    let losAngelesTimeZone = moment().tz("America/Los_Angeles");
+    losAngelesDateElement.innerHTML = losAngelesTimeZone.format("MMMM Do YYYY");
+    losAngelesTimeElement.innerHTML = `${losAngelesTimeZone.format("h:mm:ss [<small>]A[</small>]")}`;
+  }
+  let sydneyElement = document.querySelector("#city-two");
+  if (sydneyElement) {
+    let sydneyDateElement = sydneyElement.querySelector(".date");
+    let sydneyTimeElement = sydneyElement.querySelector(".time");
+    let sydneyTimeZone = moment().tz("Australia/Sydney");
+    sydneyDateElement.innerHTML = sydneyTimeZone.format("MMMM Do YYYY");
+    sydneyTimeElement.innerHTML = `${sydneyTimeZone.format("h:mm:ss [<small>]A[</small>]")}`;
+  }
 }
-
 updateTime();
 setInterval(updateTime, 1000);
+
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  if (!cityTimeZone) return;
+  let cityTime = moment().tz(cityTimeZone);
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `<div class="city" id="city-one">
+          <div>
+            <h2>${cityName}</h2>
+            <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+          </div>
+          <div class="time">${cityTime.format("hh:mm:ss")}<small>${cityTime.format("A")}</small></div>
+        </div>`;
+}
+
+let citiesSelect = document.querySelector("#city");
+citiesSelect.addEventListener("change", updateCity);
+
+updateCity();
+setInterval(updateCity, 1000);
